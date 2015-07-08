@@ -25,42 +25,32 @@ def make_chains(the_file):
 def make_text(chains):
     """Takes dictionary of markov chains; returns random text."""
 
-    # random_key = random.choice(chains.keys())
-    # print random_key
-    # random_words = []
-
-    # for word in random_key:
-    #     random_words.append(word) 
-    
-    # print random_words
 
     random_key = random.choice(chains.keys())
     random_val = random.choice(chains[random_key])
-    print random_key[0] + " " + random_key[1] + " " + random_val
+    first_phrase = [random_key[0], random_key[1],  random_val]
+    #print first_phrase
+    
+    
+    next_key = (first_phrase[-2], first_phrase[-1])
+    #print next_key
+
+    while next_key in chains:
+        first_phrase.append(random.choice(chains[next_key]))
+        # print first_phrase
+        next_key = (first_phrase[-2], first_phrase[-1])
+        
+    sentence = " ".join(first_phrase)
+    print sentence 
 
 
 
-     # # for word in chains[random_key]:
-
-    #     random_value = random.choice(chains[random_key][word])
-    #     random_words.append(random_value)
-    # print random_words
-
-        # for item in list_item
-        #     choose a random value
-        #     random_value = the random value chosen
-
-    # random_value = random.choice(chains[.value())
-    # random_key + " " + random_value
 
 
-    # return "Here's some random text."
 
 
 make_text(make_chains(sys.argv[1]))
-make_text(make_chains(sys.argv[1]))
-make_text(make_chains(sys.argv[1]))
-make_text(make_chains(sys.argv[1]))
+
 
 
 # Change this to read input_text from a file, deciding which file should
